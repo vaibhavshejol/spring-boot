@@ -6,9 +6,12 @@ import com.example.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+
+    Logger logger = Logger.getLogger(EmployeeServiceImpl.class.getName());
 
     private final EmployeeRepository employeeRepository;
 
@@ -18,6 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
+        logger.info("Request is processing with name : "+employee);
         return employeeRepository.save(employee);
     }
 
